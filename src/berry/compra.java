@@ -4,24 +4,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class compra {
+    private cliente cliente;
+    private producto producto;
+    private int cantidad;
+    private double total;
+    private double valorAPagar; 
     private String fecha;
     private cliente Cliente;
     private ArrayList<producto>productosc=new ArrayList<>();
     private ArrayList<Integer>unidadescompradas=new ArrayList<>();//Integer se usa para guardar objetos no primitivos(numeros enteros) dentro de una lista 
-    private double total;
 
-    public compra(String fecha, cliente Cliente) {
-        this.fecha = fecha;
-        this.Cliente = Cliente;
+    public compra(cliente cliente, producto producto, int cantidad) {
+        this.cliente = cliente;
+        this.producto = producto;
+        this.cantidad = cantidad;
+    }
+  
+    private void calcularTotal(){
+        total = producto.getPrecio() * cantidad;
     }
     
-    public void agregarproducto(producto p, int unidades){
-        getProductosc().add(p);
-        getUnidadescompradas().add(unidades);
-        p.diminucion_u(unidades);
-        
-                
-    }
+    
+
     public void aplicardescuento(){
         setTotal(0);
         for(int i=0;i<getProductosc().size();i++){
@@ -38,6 +42,16 @@ public class compra {
     public double gettotal(){
         return getTotal();
     }
+
+    public producto getProducto() {
+        return producto;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+    
+    
 
     public String getFecha() {
         return fecha;

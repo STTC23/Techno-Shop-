@@ -7,7 +7,7 @@ package berry;
 
 public class registro_clientes extends javax.swing.JFrame {
 
-    static Controlador control = new Controlador();
+    private Controlador control = principal.control;
     
     public registro_clientes() {
         initComponents();

@@ -6,7 +6,7 @@ package berry;
 
 
 public class registro_producto extends javax.swing.JFrame {
-    static Controlador control = new Controlador();
+    private Controlador control = principal.control;
    
     public registro_producto() {
         initComponents();

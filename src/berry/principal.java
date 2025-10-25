@@ -9,6 +9,8 @@ import java.io.File;
 import java.io.IOException;
 public class principal extends javax.swing.JFrame {
     
+    public static Controlador control = new Controlador();
+    
     private Clip clip;
     private boolean pausado = false;
     private long posicionPausa = 0;
