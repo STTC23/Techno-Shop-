@@ -50,7 +50,7 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu2">
+        <Menu class="javax.swing.JMenu" name="Listado">
           <Properties>
             <Property name="text" type="java.lang.String" value="Listado"/>
           </Properties>
@@ -61,6 +61,22 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem4ActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="MostrarUnidades">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Mostrar Unidades Totales"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MostrarUnidadesActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="MayorPrecio">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Productos de Mayor Precio"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MayorPrecioActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

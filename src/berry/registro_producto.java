@@ -79,7 +79,7 @@ public class registro_producto extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel8.setText("Registro del Producto");
 
-        MarcaCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Samsung", "LG", "Kalley", " " }));
+        MarcaCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Samsung", "LG", "Kalley" }));
 
         ResolucionCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "HD", "Full HD", "4K", "5k", "8k" }));
 
@@ -121,7 +121,7 @@ public class registro_producto extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 195, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -172,7 +172,7 @@ public class registro_producto extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(305, 305, 305)
                         .addComponent(jButton1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(223, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(169, 169, 169)
                 .addComponent(ProyectorLabel)
@@ -281,6 +281,10 @@ public class registro_producto extends javax.swing.JFrame {
             televisores tv = new televisores(codigo, marca, referencia ,color, resolucion, precio, unidad, size, tipoPantalla, OS);
             control.agregarProducto(tv);
             
+            SizePantallaCombo.setSelectedIndex(0);
+            TipoPantallaCombo.setSelectedIndex(0);
+            OSCombo.setSelectedIndex(0);
+            
         } else {
             String tipo = TipoUsoCampo.getText();
             String tecnologia = TipoTecnologiaCombo.getSelectedItem().toString();
@@ -289,9 +293,14 @@ public class registro_producto extends javax.swing.JFrame {
             
             TipoUsoCampo.setText(null);
             
+            TipoTecnologiaCombo.setSelectedIndex(0);
+            
             
         }
         
+        MarcaCombo.setSelectedIndex(0);
+        ProductoCombo.setSelectedIndex(0);
+        ResolucionCombo.setSelectedIndex(0);
         CodigoCampo.setText(null);
         ReferenciaCampo.setText(null);
         ColorCampo.setText(null);

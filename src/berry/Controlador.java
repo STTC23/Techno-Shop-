@@ -36,6 +36,14 @@ public class Controlador {
         return productos;
     }
     
+    public int obtenerTotalUnidades() {
+        int totalUnidades = 0;
+        for (producto p : productos) {
+        totalUnidades += p.getUnidades(); // usa el nombre real del atributo
+        }
+    return totalUnidades;
+}
+    
     //Compras
     public void agregarCompra (compra compra_parameter){
         compras.add(compra_parameter);
@@ -44,6 +52,7 @@ public class Controlador {
     public ArrayList<compra> getCompras() {
         return compras;
     }
+    
     
     
 

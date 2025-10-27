@@ -19,9 +19,20 @@ public class principal extends javax.swing.JFrame {
         initComponents();
         agregarControlesMusica();
         reproducirMusica("src/berry/menu.wav");
+        MostrarUnidades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarTotalUnidades();
+            }
+    });
         
     }
-    
+     private void mostrarTotalUnidades() {
+        int total = control.obtenerTotalUnidades();
+        JOptionPane.showMessageDialog(this,
+            "La tienda ofrece un total de " + total + " unidades de productos.",
+            "Total de Unidades",
+            JOptionPane.INFORMATION_MESSAGE);
+    }
     private void agregarControlesMusica() {
         JButton btnReproducir = new JButton("▶ Reproducir");
         JButton btnPausar = new JButton("⏸ Pausar");
@@ -88,8 +99,10 @@ public class principal extends javax.swing.JFrame {
         cliente = new javax.swing.JMenuItem();
         registro_producto = new javax.swing.JMenuItem();
         registro_compra = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        Listado = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
+        MostrarUnidades = new javax.swing.JMenuItem();
+        MayorPrecio = new javax.swing.JMenuItem();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -155,7 +168,7 @@ public class principal extends javax.swing.JFrame {
 
         jMenuBar1.add(registro_cliente);
 
-        jMenu2.setText("Listado");
+        Listado.setText("Listado");
 
         jMenuItem4.setText("Listar Productos");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
@@ -163,9 +176,25 @@ public class principal extends javax.swing.JFrame {
                 jMenuItem4ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem4);
+        Listado.add(jMenuItem4);
 
-        jMenuBar1.add(jMenu2);
+        MostrarUnidades.setText("Mostrar Unidades Totales");
+        MostrarUnidades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MostrarUnidadesActionPerformed(evt);
+            }
+        });
+        Listado.add(MostrarUnidades);
+
+        MayorPrecio.setText("Productos de Mayor Precio");
+        MayorPrecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MayorPrecioActionPerformed(evt);
+            }
+        });
+        Listado.add(MayorPrecio);
+
+        jMenuBar1.add(Listado);
 
         setJMenuBar(jMenuBar1);
 
@@ -200,6 +229,52 @@ public class principal extends javax.swing.JFrame {
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void MostrarUnidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarUnidadesActionPerformed
+
+                 // TODO add your handling code here:
+    }//GEN-LAST:event_MostrarUnidadesActionPerformed
+
+    private void MayorPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MayorPrecioActionPerformed
+        java.util.List<producto> productos=control.getProductos();
+        if (productos==null|| productos.isEmpty()){
+            javax.swing.JOptionPane.showMessageDialog(this,"no hay productos registrados","repport of products", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }// TODO add your handling code here:
+        double maxprecio=-1;
+        for(producto p: productos){
+            if (p.getPrecio()>maxprecio){
+                maxprecio=p.getPrecio();
+                }
+            }
+        java.util.List<producto>productosMascaros=new java.util.ArrayList<>();
+        for(producto p:productos){
+            if(p.getPrecio()==maxprecio){
+            productosMascaros.add(p);
+            }
+        }   
+        StringBuilder sb=new StringBuilder();
+        sb.append("productos con precio mas alto son: ").append(String.format(" ", maxprecio));
+        if (productosMascaros.isEmpty()){
+            sb.append("error, no se encontro el producto");
+    
+        }else{
+        
+            for(producto p:productosMascaros){
+                String tipo;
+                
+                if (p instanceof televisores){
+                    tipo = "Televisor";
+                } else {
+                    tipo = "Proyector";
+                }
+                
+                sb.append("codigo: ").append(p.getCodigo()).append("\n").append("marca: ").append(p.getMarca()).append("\n").append("Tipo:  ").append(tipo).append("\n").append("Precio:  ").append(p.getPrecio());
+            }
+                }
+        javax.swing.JOptionPane.showMessageDialog(this,sb.toString(),"productos mas caros",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+
+    }//GEN-LAST:event_MayorPrecioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -238,9 +313,11 @@ public class principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu Listado;
+    private javax.swing.JMenuItem MayorPrecio;
+    private javax.swing.JMenuItem MostrarUnidades;
     private javax.swing.JMenuItem cliente;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel2;

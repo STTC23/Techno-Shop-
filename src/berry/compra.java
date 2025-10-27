@@ -10,18 +10,44 @@ public class compra {
     private double total;
     private double valorAPagar; 
     private String fecha;
-    private cliente Cliente;
-    private ArrayList<producto>productosc=new ArrayList<>();
-    private ArrayList<Integer>unidadescompradas=new ArrayList<>();//Integer se usa para guardar objetos no primitivos(numeros enteros) dentro de una lista 
+    private ArrayList<producto>productosc;
+    private ArrayList<Integer>unidadescompradas;//Integer se usa para guardar objetos no primitivos(numeros enteros) dentro de una lista 
 
-    public compra(cliente cliente, producto producto, int cantidad) {
+    public compra(cliente cliente, producto producto, int cantidad, String fecha) {
         this.cliente = cliente;
         this.producto = producto;
         this.cantidad = cantidad;
+        this.fecha = fecha;
+        calcularTotal();
+        productosc =new ArrayList<>();
+        unidadescompradas =new ArrayList<>();
     }
+
+    public compra() {
+        productosc =new ArrayList<>();
+        unidadescompradas =new ArrayList<>();
+    }
+    
+    
   
-    private void calcularTotal(){
-        total = producto.getPrecio() * cantidad;
+    public double calcularTotal() {
+    double acomulador = 0;
+    for (int i = 0; i<productosc.size();i++){
+        acomulador+= productosc.get(i).getPrecio() * unidadescompradas.get(i);
+    }
+    return acomulador;
+    
+}
+    public void agregarProductoACompra(producto p, int a){
+        productosc.add(p);
+        unidadescompradas.add(a);
+    }
+    
+    public String mostrarProductosDeCompra(){
+        String texto = "";
+        for (int i = 0; i<productosc.size();i++)
+            texto += productosc.get(i).getCodigo() + " " + productosc.get(i).getMarca() + " " + String.valueOf(productosc.get(i).getPrecio()) + " " + String.valueOf(unidadescompradas.get(i));
+        return texto;
     }
     
     
@@ -37,6 +63,10 @@ public class compra {
         if (getCliente().cumpleaños(getFecha())){
             setTotal(getTotal() * 0.8);
         }
+        
+    }
+    
+    public double descuento(){
         
     }
     public double gettotal(){
@@ -62,12 +92,12 @@ public class compra {
     }
 
     public cliente getCliente() {
-        return Cliente;
+        return cliente;
     }
 
 
     public void setCliente(cliente Cliente) {
-        this.Cliente = Cliente;
+        this.cliente = Cliente;
     }
 
     public ArrayList<producto> getProductosc() {
@@ -99,7 +129,7 @@ public class compra {
 
     @Override
     public String toString() {
-        return "info_R{" + "fecha=" + fecha + ", Cliente=" + Cliente + ", productosc=" + productosc + ", unidadescompradas=" + unidadescompradas + ", total=" + total + '}';
+        return "info_R{" + "fecha:  " + fecha + ", Cliente" + cliente + ", productos:  " + productosc + ", unidades compradas:  " + unidadescompradas + ", total:  " + total + '}';
     }
     
 }

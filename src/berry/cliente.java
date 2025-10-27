@@ -51,7 +51,7 @@ public class cliente {
 
     @Override
     public String toString() {
-        return "cliente{" + "nombre=" + nombre + ", numdocumento=" + numdocumento + ", fechanacimiento=" + "fecha n"+'}';
+        return "cliente:  " + "nombre:  " + nombre + ", Número de Documento:  " + numdocumento + ", Fecha de Nacimiento:  " + fecha_n +'}';
     }
     
 }
