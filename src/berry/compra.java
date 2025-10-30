@@ -8,6 +8,7 @@ public class compra {
     private producto producto;
     private int cantidad;
     private double total;
+    private double descuento;
     private double valorAPagar; 
     private String fecha;
     private ArrayList<producto>productosc;
@@ -18,11 +19,47 @@ public class compra {
         this.producto = producto;
         this.cantidad = cantidad;
         this.fecha = fecha;
-        calcularTotal();
         productosc =new ArrayList<>();
         unidadescompradas =new ArrayList<>();
     }
 
+     public double valorAPagar(cliente cliente) {
+
+        String diaMesNacimiento = "";
+        if (cliente.getfecha_n().length() >= 10) {
+             diaMesNacimiento = cliente.getfecha_n().substring(5, 10);
+        }
+        // Se extrae el día y mes de la fecha de compra
+        String diaMesCompra = "";
+         if (fecha.length() >= 10) {
+             diaMesCompra = fecha.substring(5, 10);
+        }
+
+        if (diaMesNacimiento.equals(diaMesCompra)&& !diaMesNacimiento.isEmpty()) 
+            return this.descuento = this.total * 0.80; 
+        else
+        return this.total; 
+    }
+
+    
+    public double aplicarDescuento(cliente cliente) {
+
+        String diaMesNacimiento = "";
+        if (cliente.getfecha_n().length() >= 10) {
+             diaMesNacimiento = cliente.getfecha_n().substring(5, 10);
+        }
+        // Se extrae el día y mes de la fecha de compra
+        String diaMesCompra = "";
+         if (fecha.length() >= 10) {
+             diaMesCompra = fecha.substring(5, 10);
+        }
+
+        if (diaMesNacimiento.equals(diaMesCompra)&& !diaMesNacimiento.isEmpty()) 
+            return this.descuento = this.total * 0.20; 
+        else
+        return 0; 
+    }
+    
     public compra() {
         productosc =new ArrayList<>();
         unidadescompradas =new ArrayList<>();
@@ -31,13 +68,17 @@ public class compra {
     
   
     public double calcularTotal() {
-    double acomulador = 0;
-    for (int i = 0; i<productosc.size();i++){
-        acomulador+= productosc.get(i).getPrecio() * unidadescompradas.get(i);
-    }
-    return acomulador;
+    double subtotal = 0.0; 
     
+    for (int i = 0; i < productosc.size(); i++) {
+        subtotal += productosc.get(i).getPrecio() * unidadescompradas.get(i);
+    }
+
+    this.total = subtotal;
+    return total;
 }
+    
+
     public void agregarProductoACompra(producto p, int a){
         productosc.add(p);
         unidadescompradas.add(a);
@@ -46,29 +87,11 @@ public class compra {
     public String mostrarProductosDeCompra(){
         String texto = "";
         for (int i = 0; i<productosc.size();i++)
-            texto += productosc.get(i).getCodigo() + " " + productosc.get(i).getMarca() + " " + String.valueOf(productosc.get(i).getPrecio()) + " " + String.valueOf(unidadescompradas.get(i));
+            texto += "codigo: "+productosc.get(i).getCodigo() + "Marca: " + productosc.get(i).getMarca() + "Precio: " + String.valueOf(productosc.get(i).getPrecio()) + "Unidades: " + String.valueOf(unidadescompradas.get(i));
         return texto;
     }
     
     
-
-    public void aplicardescuento(){
-        setTotal(0);
-        for(int i=0;i<getProductosc().size();i++){
-            setTotal(getTotal() + getProductosc().get(i).getPrecio() * getUnidadescompradas().get(i));
-            
-        }
-    }
-    public void aplicarcumpleaños(){
-        if (getCliente().cumpleaños(getFecha())){
-            setTotal(getTotal() * 0.8);
-        }
-        
-    }
-    
-    public double descuento(){
-        
-    }
     public double gettotal(){
         return getTotal();
     }
@@ -131,5 +154,7 @@ public class compra {
     public String toString() {
         return "info_R{" + "fecha:  " + fecha + ", Cliente" + cliente + ", productos:  " + productosc + ", unidades compradas:  " + unidadescompradas + ", total:  " + total + '}';
     }
+    
+    
     
 }

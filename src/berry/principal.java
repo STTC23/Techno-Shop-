@@ -17,73 +17,6 @@ public class principal extends javax.swing.JFrame {
 
     public principal() {
         initComponents();
-        agregarControlesMusica();
-        reproducirMusica("src/berry/menu.wav");
-        MostrarUnidades.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mostrarTotalUnidades();
-            }
-    });
-        
-    }
-     private void mostrarTotalUnidades() {
-        int total = control.obtenerTotalUnidades();
-        JOptionPane.showMessageDialog(this,
-            "La tienda ofrece un total de " + total + " unidades de productos.",
-            "Total de Unidades",
-            JOptionPane.INFORMATION_MESSAGE);
-    }
-    private void agregarControlesMusica() {
-        JButton btnReproducir = new JButton("▶ Reproducir");
-        JButton btnPausar = new JButton("⏸ Pausar");
-        JButton btnDetener = new JButton("⏹ Detener");
-
-        // Ubicación y estilo
-        btnReproducir.setBounds(200, 350, 120, 30);
-        btnPausar.setBounds(330, 350, 120, 30);
-        btnDetener.setBounds(460, 350, 120, 30);
-
-        // Acción de reproducir
-        btnReproducir.addActionListener(e -> reproducirMusica("src/berry/menu.wav"));
-
-        // Acción de pausar
-        btnPausar.addActionListener(e -> pausarMusica());
-
-        // Acción de detener
-        btnDetener.addActionListener(e -> detenerMusica());
-    }
-
-    private void reproducirMusica(String archivo) {
-        try {
-            if (clip == null) {
-                AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File(archivo));
-                clip = AudioSystem.getClip();
-                clip.open(audioStream);
-            }
-            if (pausado) {
-                clip.setMicrosecondPosition(posicionPausa);
-                pausado = false;
-            }
-            clip.start();
-        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
-            JOptionPane.showMessageDialog(this, "Error al reproducir el audio: " + ex.getMessage());
-        }
-    }
-
-    private void pausarMusica() {
-        if (clip != null && clip.isRunning()) {
-            posicionPausa = clip.getMicrosecondPosition();
-            clip.stop();
-            pausado = true;
-        }
-    }
-
-    private void detenerMusica() {
-        if (clip != null) {
-            clip.stop();
-            clip.setMicrosecondPosition(0);
-            pausado = false;
-        }
     }
 
 
@@ -100,9 +33,10 @@ public class principal extends javax.swing.JFrame {
         registro_producto = new javax.swing.JMenuItem();
         registro_compra = new javax.swing.JMenuItem();
         Listado = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
         MostrarUnidades = new javax.swing.JMenuItem();
         MayorPrecio = new javax.swing.JMenuItem();
+        PorcentajeMenu = new javax.swing.JMenuItem();
+        PromedioSamsung = new javax.swing.JMenuItem();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -128,7 +62,7 @@ public class principal extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(220, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(205, 205, 205))
         );
@@ -170,14 +104,6 @@ public class principal extends javax.swing.JFrame {
 
         Listado.setText("Listado");
 
-        jMenuItem4.setText("Listar Productos");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
-        Listado.add(jMenuItem4);
-
         MostrarUnidades.setText("Mostrar Unidades Totales");
         MostrarUnidades.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,6 +120,22 @@ public class principal extends javax.swing.JFrame {
         });
         Listado.add(MayorPrecio);
 
+        PorcentajeMenu.setText("Porcentaje Televisores");
+        PorcentajeMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PorcentajeMenuActionPerformed(evt);
+            }
+        });
+        Listado.add(PorcentajeMenu);
+
+        PromedioSamsung.setText("Precio Promedio Samsung");
+        PromedioSamsung.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PromedioSamsungActionPerformed(evt);
+            }
+        });
+        Listado.add(PromedioSamsung);
+
         jMenuBar1.add(Listado);
 
         setJMenuBar(jMenuBar1);
@@ -202,7 +144,7 @@ public class principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 309, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,19 +168,40 @@ public class principal extends javax.swing.JFrame {
         new registro_compra().setVisible(true);    // TODO add your handling code here:
     }//GEN-LAST:event_registro_compraActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
-
     private void MostrarUnidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarUnidadesActionPerformed
+    java.util.List<producto> productos = control.getProductos();
 
+    if (productos == null || productos.isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(this,
+            "No hay productos registrados.",
+            "Unidades de productos",
+            javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        return;
+    }
+
+    int totalTelevisores = 0;
+    int totalProyectores = 0;
+
+    for (producto p : productos) {
+        if (p instanceof televisores) {
+            totalTelevisores++;
+        } else if (p instanceof proyectores) {
+            totalProyectores++;
+        }
+    }
+
+    int totalGeneral = totalTelevisores + totalProyectores;
+
+    String mensaje = "Total de unidades registradas:\n" + "• Televisores: " + totalTelevisores + "\n" + "• Proyectores: " + totalProyectores + "\n" + "• Total general: " + totalGeneral;
+
+    javax.swing.JOptionPane.showMessageDialog(this,mensaje, "Unidades de productos", javax.swing.JOptionPane.INFORMATION_MESSAGE);
                  // TODO add your handling code here:
     }//GEN-LAST:event_MostrarUnidadesActionPerformed
 
     private void MayorPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MayorPrecioActionPerformed
         java.util.List<producto> productos=control.getProductos();
         if (productos==null|| productos.isEmpty()){
-            javax.swing.JOptionPane.showMessageDialog(this,"no hay productos registrados","repport of products", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"no hay productos registrados","Reporte de productos", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             return;
         }// TODO add your handling code here:
         double maxprecio=-1;
@@ -269,16 +232,75 @@ public class principal extends javax.swing.JFrame {
                     tipo = "Proyector";
                 }
                 
-                sb.append("codigo: ").append(p.getCodigo()).append("\n").append("marca: ").append(p.getMarca()).append("\n").append("Tipo:  ").append(tipo).append("\n").append("Precio:  ").append(p.getPrecio());
+                sb.append("\n").append("codigo: ").append(p.getCodigo()).append("\n").append("marca: ").append(p.getMarca()).append("\n").append("Tipo:  ").append(tipo).append("\n").append("Precio:  ").append(p.getPrecio());
             }
                 }
         javax.swing.JOptionPane.showMessageDialog(this,sb.toString(),"productos mas caros",javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
     }//GEN-LAST:event_MayorPrecioActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void PorcentajeMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PorcentajeMenuActionPerformed
+        java.util.List<producto> productos = control.getProductos();
+        if (productos == null || productos.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this,  "No hay productos registrados.", "Porcentaje de Televisores", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        int totalProductos = productos.size();
+        int cantidadTelevisores = 0;
+
+        for (producto p : productos) {
+            if (p instanceof televisores) {  // verifica si es un objeto de tipo televisor
+                cantidadTelevisores++;
+            }
+        }
+
+        double porcentaje = (cantidadTelevisores * 100.0) / totalProductos; //Definición de porcentaje 
+
+        javax.swing.JOptionPane.showMessageDialog(this, 
+            "El " + String.format("%.2f", porcentaje) + "% de los productos son televisores.\n" + //&.2f es el formato se refiere a que solo mostrará dos decimales
+            "Total productos: " + totalProductos + "\n" +
+            "Televisores: " + cantidadTelevisores,
+            "Porcentaje de Televisores", 
+            javax.swing.JOptionPane.INFORMATION_MESSAGE);    
+    }//GEN-LAST:event_PorcentajeMenuActionPerformed
+
+    private void PromedioSamsungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PromedioSamsungActionPerformed
+        java.util.List<producto> productos = control.getProductos();
+
+        if (productos == null || productos.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "No hay productos registrados.", "Promedio Samsung", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        double suma = 0;
+        int contador = 0;
+
+        for (producto p : productos) {
+            if (p.getMarca().equalsIgnoreCase("Samsung")) { // compara sin importar mayúsculas de la palabra Samsung
+                suma += p.getPrecio();
+                contador++;
+            }
+        }
+
+        if (contador == 0) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                "No hay productos de la marca Samsung registrados.",
+                "Promedio Samsung",
+                javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        double promedio = suma / contador; //Definición de promedio
+
+        javax.swing.JOptionPane.showMessageDialog(this,
+            "El precio promedio de los productos Samsung es: $" + String.format("%,.2f", promedio) +
+            "\nCantidad de productos Samsung: " + contador,
+            "Promedio Samsung",
+            javax.swing.JOptionPane.INFORMATION_MESSAGE);       
+    }//GEN-LAST:event_PromedioSamsungActionPerformed
+
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -316,10 +338,11 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JMenu Listado;
     private javax.swing.JMenuItem MayorPrecio;
     private javax.swing.JMenuItem MostrarUnidades;
+    private javax.swing.JMenuItem PorcentajeMenu;
+    private javax.swing.JMenuItem PromedioSamsung;
     private javax.swing.JMenuItem cliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JMenu registro_cliente;

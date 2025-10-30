@@ -26,7 +26,7 @@ public class Controlador {
     public ArrayList<cliente> getClientes() {
         return clientes;
     }
-    
+
     //Productos
     public void agregarProducto (producto producto_parameter){
         productos.add(producto_parameter);
@@ -53,7 +53,22 @@ public class Controlador {
         return compras;
     }
     
-    
+    public String cantidadUnidades(String codigo, int cant) {
+        for (producto p : productos) {
+            if (p.getCodigo().equals(codigo)) {
+                int cantidad = p.getUnidades() - cant;
+                p.setUnidades(cantidad);
+
+                if (p.getUnidades() < 10) {
+                    return "La cantidad es menor a 10 unidades, por favor recargar";
+                }
+
+                return "La cantidad del producto con código: " + codigo + " es de " + p.getUnidades();
+            }
+        }
+
+        return "No se encontró ningún producto con el código: " + codigo;
+    }
     
 
 }
