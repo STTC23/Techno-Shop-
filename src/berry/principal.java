@@ -1,22 +1,21 @@
 
 package berry;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import javax.sound.sampled.*;
-import java.io.File;
-import java.io.IOException;
+import org.jfree.data.category.DefaultCategoryDataset; //Librería de gráficos para crear contenedor
+import org.jfree.data.general.DefaultPieDataset; // Librería para las opciones de torta
+import org.jfree.chart.plot.PlotOrientation; // Librería para establecer la orientación en las gráficas de lineas
+import org.jfree.chart.JFreeChart; //Librería JFreeChart
+import org.jfree.chart.ChartFactory; // Librería para el generador de gráficos
+import org.jfree.chart.ChartPanel; // Librería para generar el panel del gráfico
+import javax.swing.JFrame;
+
+
 public class principal extends javax.swing.JFrame {
     
     public static Controlador control = new Controlador();
     
-    private Clip clip;
-    private boolean pausado = false;
-    private long posicionPausa = 0;
-
     public principal() {
-        initComponents();
+        initComponents();  
     }
 
 
@@ -26,7 +25,7 @@ public class principal extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        Logo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         registro_cliente = new javax.swing.JMenu();
         cliente = new javax.swing.JMenuItem();
@@ -37,6 +36,12 @@ public class principal extends javax.swing.JFrame {
         MayorPrecio = new javax.swing.JMenuItem();
         PorcentajeMenu = new javax.swing.JMenuItem();
         PromedioSamsung = new javax.swing.JMenuItem();
+        Opcional = new javax.swing.JMenu();
+        MarcaGrafico = new javax.swing.JMenuItem();
+        ResolucionGrafico = new javax.swing.JMenuItem();
+        TipoGrafico = new javax.swing.JMenuItem();
+        Menucreditos = new javax.swing.JMenu();
+        Creditos = new javax.swing.JMenuItem();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -54,8 +59,8 @@ public class principal extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setForeground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/berry/Materiales proyecto de Lógica/logo.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
+        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/berry/Materiales proyecto de Lógica/logo.png"))); // NOI18N
+        Logo.setText("jLabel1");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -63,14 +68,14 @@ public class principal extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Logo, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(205, 205, 205))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(Logo)
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
@@ -138,6 +143,46 @@ public class principal extends javax.swing.JFrame {
 
         jMenuBar1.add(Listado);
 
+        Opcional.setText("Opcional");
+
+        MarcaGrafico.setText("Marca");
+        MarcaGrafico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MarcaGraficoActionPerformed(evt);
+            }
+        });
+        Opcional.add(MarcaGrafico);
+
+        ResolucionGrafico.setText("Por resolución");
+        ResolucionGrafico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ResolucionGraficoActionPerformed(evt);
+            }
+        });
+        Opcional.add(ResolucionGrafico);
+
+        TipoGrafico.setText("Cantidad Proyectores y Televisores");
+        TipoGrafico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TipoGraficoActionPerformed(evt);
+            }
+        });
+        Opcional.add(TipoGrafico);
+
+        jMenuBar1.add(Opcional);
+
+        Menucreditos.setText("Créditos");
+
+        Creditos.setText("Autores y Agradecimientos");
+        Creditos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CreditosActionPerformed(evt);
+            }
+        });
+        Menucreditos.add(Creditos);
+
+        jMenuBar1.add(Menucreditos);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -203,7 +248,7 @@ public class principal extends javax.swing.JFrame {
         if (productos==null|| productos.isEmpty()){
             javax.swing.JOptionPane.showMessageDialog(this,"no hay productos registrados","Reporte de productos", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             return;
-        }// TODO add your handling code here:
+        }
         double maxprecio=-1;
         for(producto p: productos){
             if (p.getPrecio()>maxprecio){
@@ -300,6 +345,153 @@ public class principal extends javax.swing.JFrame {
             javax.swing.JOptionPane.INFORMATION_MESSAGE);       
     }//GEN-LAST:event_PromedioSamsungActionPerformed
 
+    private void MarcaGraficoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MarcaGraficoActionPerformed
+        java.util.List<producto> productos=control.getProductos();
+        if (productos==null|| productos.isEmpty()){
+            javax.swing.JOptionPane.showMessageDialog(this,"no hay productos registrados","Reporte de productos", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
+        int samsung = 0;
+        int lg = 0;
+        int kalley = 0;
+        
+        for (producto p: productos){
+            if (p.getMarca().equalsIgnoreCase("Samsung"))
+                samsung++;
+            if (p.getMarca().equalsIgnoreCase("LG"))
+                lg++;
+            if (p.getMarca().equalsIgnoreCase("Kalley"))
+                kalley++;
+        }
+        
+        
+        DefaultPieDataset contenedor = new DefaultPieDataset();
+        contenedor.setValue("Samsung", //Primer argumento: Título
+                samsung); // Segundo argumento: Valores
+        contenedor.setValue("LG",lg);
+        contenedor.setValue("Kelly",kalley);
+        
+        JFreeChart grafico = ChartFactory.createPieChart(
+            "Distribución de productos por marca", // título
+        contenedor, // datos
+        true, // mostrar leyenda (división de categorías
+        true, // usar tooltips
+        false // sin URLs
+        );
+        
+        ChartPanel panel = new ChartPanel(grafico);
+        
+        
+        JFrame ventana = new JFrame("Gráfico de torta");
+        ventana.setContentPane(panel);
+        ventana.pack();
+        ventana.setLocationRelativeTo(this);
+        ventana.setVisible(true);
+
+        
+
+
+
+    }//GEN-LAST:event_MarcaGraficoActionPerformed
+
+    private void TipoGraficoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TipoGraficoActionPerformed
+        java.util.List<producto> productos=control.getProductos();
+        if (productos==null|| productos.isEmpty()){
+            javax.swing.JOptionPane.showMessageDialog(this,"no hay productos registrados","Reporte de productos", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
+        int contador_televisores = 0;
+        int contador_proyectores = 0; 
+        
+        for (producto p: productos){
+            if (p instanceof televisores)
+                contador_televisores++;
+         else if (p instanceof proyectores)
+            contador_proyectores++;
+        }
+        
+        DefaultCategoryDataset contenedor = new DefaultCategoryDataset(); //Contenedor de gráficos de torta
+        contenedor.addValue(
+                contador_televisores, //Primer argumento: Valor numérico
+                "Cantidad", 
+                "Televisores"); 
+        contenedor.addValue(contador_proyectores, "Cantidad", "Proyectores");
+        
+        JFreeChart grafico = ChartFactory.createBarChart( //BarChart crea una gráfica de torta
+        "Cantidad de productos por tipo", // //Título del gráfico
+        "Tipo de producto", // Etiqueta para X 
+        "Cantidad", // Etiqueta para Y
+        contenedor // Datos de la gráfica
+        );
+        
+        ChartPanel panel = new ChartPanel(grafico); //Mostrar el gráfico en un panel
+        JFrame ventana = new JFrame("Gráfico por tipo");
+        ventana.setContentPane(panel); //Mete el panel con el gráfico en el JFrame
+        ventana.pack(); //Pack ajusta el tamaño al contenido
+        ventana.setLocationRelativeTo(this); //Centra la ventana
+        ventana.setVisible(true); //Muestra la ventana        
+    }//GEN-LAST:event_TipoGraficoActionPerformed
+
+    private void ResolucionGraficoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResolucionGraficoActionPerformed
+        java.util.List<producto> productos=control.getProductos();
+        if (productos==null|| productos.isEmpty()){
+            javax.swing.JOptionPane.showMessageDialog(this,"no hay productos registrados","Reporte de productos", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
+        /*Para este caso tenemos 6 items HD
+            Full HD
+            4K
+            5k
+            8k
+        */
+        
+        int HD = 0;
+        int four_k = 0;
+        int five_k = 0;
+        int eight_k = 0;
+        
+        for (producto p: productos){
+            if (p.getResolucion().equalsIgnoreCase("Full HD"))
+                HD++;
+            if (p.getResolucion().equalsIgnoreCase("4k"))
+                four_k++;
+            if (p.getResolucion().equalsIgnoreCase("5k"))
+                five_k++;
+            if (p.getResolucion().equalsIgnoreCase("8k"))
+                eight_k++;
+        }
+        
+        DefaultCategoryDataset contenedor = new DefaultCategoryDataset();
+        contenedor.addValue(HD, "Cantidad", "Full HD");
+        contenedor.addValue(four_k, "Cantidad", "4k");
+        contenedor.addValue(five_k, "Cantidad", "5k");
+        contenedor.addValue(eight_k, "División por resolución", "8k");
+        
+        JFreeChart grafico = ChartFactory.createLineChart("División por resolución", //título
+                "Cantidad",  // Eje x
+                "Resolución", // Eje y
+                contenedor,  // Datos
+                PlotOrientation.VERTICAL, //Orientación de las lineas
+                true, //Leyendas
+                true, // Tooltips 
+                false // URLs
+                );
+        
+        ChartPanel panel = new ChartPanel(grafico);
+        JFrame ventana = new JFrame("Gráfico de líneas");
+        ventana.setContentPane(panel);
+        ventana.pack();
+        ventana.setVisible(true);
+    }//GEN-LAST:event_ResolucionGraficoActionPerformed
+
+    private void CreditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreditosActionPerformed
+        String text = "Este proyecto fue hecho por: Juan Bedoya, Andrés Cuartas y Daniel Sabogal. Agradecemos a la profesora Betsy por permitirnos aprender este maravilloso lenguaje";
+        javax.swing.JOptionPane.showMessageDialog(this,text,"Agradecimientos", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_CreditosActionPerformed
+
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -335,13 +527,19 @@ public class principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Creditos;
     private javax.swing.JMenu Listado;
+    private javax.swing.JLabel Logo;
+    private javax.swing.JMenuItem MarcaGrafico;
     private javax.swing.JMenuItem MayorPrecio;
+    private javax.swing.JMenu Menucreditos;
     private javax.swing.JMenuItem MostrarUnidades;
+    private javax.swing.JMenu Opcional;
     private javax.swing.JMenuItem PorcentajeMenu;
     private javax.swing.JMenuItem PromedioSamsung;
+    private javax.swing.JMenuItem ResolucionGrafico;
+    private javax.swing.JMenuItem TipoGrafico;
     private javax.swing.JMenuItem cliente;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -350,3 +548,4 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem registro_producto;
     // End of variables declaration//GEN-END:variables
 }
+

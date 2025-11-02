@@ -22,22 +22,22 @@ public class registro_producto extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        CodigoLabel = new javax.swing.JLabel();
+        ReferenciaLabel = new javax.swing.JLabel();
+        MarcaLabel = new javax.swing.JLabel();
+        ColorLabel = new javax.swing.JLabel();
+        ResolucionLabel = new javax.swing.JLabel();
+        PrecioLabel = new javax.swing.JLabel();
+        UnidadDisLabel = new javax.swing.JLabel();
         GuardarBoton = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
+        TituloProducto = new javax.swing.JLabel();
         CodigoCampo = new javax.swing.JTextField();
         MarcaCombo = new javax.swing.JComboBox<>();
         ReferenciaCampo = new javax.swing.JTextField();
         ColorCampo = new javax.swing.JTextField();
         ResolucionCombo = new javax.swing.JComboBox<>();
         PrecioCampo = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
+        ProductoLabel = new javax.swing.JLabel();
         ProductoCombo = new javax.swing.JComboBox<>();
         TelevisionLabel = new javax.swing.JLabel();
         ProyectorLabel = new javax.swing.JLabel();
@@ -52,31 +52,31 @@ public class registro_producto extends javax.swing.JFrame {
         TipoPantallaCombo = new javax.swing.JComboBox<>();
         OSCombo = new javax.swing.JComboBox<>();
         UnidadCampo = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        Monitor = new javax.swing.JLabel();
+        FraseSonic = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(153, 204, 255));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel1.setText("Codigo:");
+        CodigoLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        CodigoLabel.setText("Codigo:");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel2.setText("Referencia:");
+        ReferenciaLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        ReferenciaLabel.setText("Referencia:");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel3.setText("Marca:");
+        MarcaLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        MarcaLabel.setText("Marca:");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel4.setText("Color:");
+        ColorLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        ColorLabel.setText("Color:");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel5.setText("Resolución:");
+        ResolucionLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        ResolucionLabel.setText("Resolución:");
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel6.setText("Precio:");
+        PrecioLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        PrecioLabel.setText("Precio:");
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel7.setText("Unidades disponibles:");
+        UnidadDisLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        UnidadDisLabel.setText("Unidades disponibles:");
 
         GuardarBoton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         GuardarBoton.setText("Guardar");
@@ -86,8 +86,8 @@ public class registro_producto extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel8.setText("Registro del Producto");
+        TituloProducto.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        TituloProducto.setText("Registro del Producto");
 
         MarcaCombo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         MarcaCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Samsung", "LG", "Kalley" }));
@@ -95,8 +95,8 @@ public class registro_producto extends javax.swing.JFrame {
         ResolucionCombo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         ResolucionCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "HD", "Full HD", "4K", "5k", "8k" }));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel10.setText("Producto:");
+        ProductoLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        ProductoLabel.setText("Producto:");
 
         ProductoCombo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         ProductoCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Televisores", "Proyectores" }));
@@ -139,10 +139,10 @@ public class registro_producto extends javax.swing.JFrame {
         OSCombo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         OSCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Android TV", "Google TV", "Tizen", "WebOS", "Roku TV" }));
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/berry/Materiales proyecto de Lógica/monitores.gif"))); // NOI18N
+        Monitor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/berry/Materiales proyecto de Lógica/monitores.gif"))); // NOI18N
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel11.setText("¡Disfruta de tu compra!");
+        FraseSonic.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        FraseSonic.setText("¡Disfruta de tu compra!");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -151,9 +151,9 @@ public class registro_producto extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 438, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FraseSonic, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel10)
+                        .addComponent(ProductoLabel)
                         .addGap(18, 18, 18)
                         .addComponent(ProductoCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(51, 51, 51))
@@ -197,17 +197,17 @@ public class registro_producto extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel5)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(ColorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(CodigoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ResolucionLabel)
+                        .addComponent(PrecioLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ReferenciaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
+                        .addComponent(MarcaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(UnidadDisLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TituloProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,50 +220,50 @@ public class registro_producto extends javax.swing.JFrame {
                                 .addComponent(PrecioCampo)
                                 .addComponent(UnidadCampo)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel9)
+                        .addComponent(Monitor)
                         .addGap(101, 101, 101))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jLabel8)
+                .addComponent(TituloProducto)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CodigoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(CodigoLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ReferenciaLabel, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(ReferenciaCampo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14)
-                .addComponent(jLabel11)
+                .addComponent(FraseSonic)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
+                            .addComponent(MarcaLabel)
                             .addComponent(MarcaCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(26, 26, 26)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
+                            .addComponent(ColorLabel)
                             .addComponent(ColorCampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(21, 21, 21)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
+                            .addComponent(ResolucionLabel)
                             .addComponent(ResolucionCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel9))
+                    .addComponent(Monitor))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                    .addComponent(PrecioLabel)
                     .addComponent(PrecioCampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
+                    .addComponent(ProductoLabel)
                     .addComponent(ProductoCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(2, 2, 2)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
+                    .addComponent(UnidadDisLabel)
                     .addComponent(UnidadCampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -277,9 +277,7 @@ public class registro_producto extends javax.swing.JFrame {
                     .addComponent(SizePantallaCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(TipoTecnologiaCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(TipoTecnologiaCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(TipoTecnologiaLabel)
@@ -447,16 +445,25 @@ public class registro_producto extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField CodigoCampo;
+    private javax.swing.JLabel CodigoLabel;
     private javax.swing.JTextField ColorCampo;
+    private javax.swing.JLabel ColorLabel;
+    private javax.swing.JLabel FraseSonic;
     private javax.swing.JButton GuardarBoton;
     private javax.swing.JComboBox<String> MarcaCombo;
+    private javax.swing.JLabel MarcaLabel;
+    private javax.swing.JLabel Monitor;
     private javax.swing.JComboBox<String> OSCombo;
     private javax.swing.JLabel OSLabel;
     private javax.swing.JTextField PrecioCampo;
+    private javax.swing.JLabel PrecioLabel;
     private javax.swing.JComboBox<String> ProductoCombo;
+    private javax.swing.JLabel ProductoLabel;
     private javax.swing.JLabel ProyectorLabel;
     private javax.swing.JTextField ReferenciaCampo;
+    private javax.swing.JLabel ReferenciaLabel;
     private javax.swing.JComboBox<String> ResolucionCombo;
+    private javax.swing.JLabel ResolucionLabel;
     private javax.swing.JComboBox<String> SizePantallaCombo;
     private javax.swing.JLabel TamañoPulgadaLabel;
     private javax.swing.JLabel TelevisionLabel;
@@ -466,18 +473,9 @@ public class registro_producto extends javax.swing.JFrame {
     private javax.swing.JLabel TipoTecnologiaLabel;
     private javax.swing.JTextField TipoUsoCampo;
     private javax.swing.JLabel TipoUsoLabel;
+    private javax.swing.JLabel TituloProducto;
     private javax.swing.JTextField UnidadCampo;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel UnidadDisLabel;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

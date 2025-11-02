@@ -23,7 +23,7 @@ public class registro_clientes extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        TituloCliente = new javax.swing.JLabel();
         DocumentoLabel = new javax.swing.JLabel();
         NombreLabel = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -32,16 +32,16 @@ public class registro_clientes extends javax.swing.JFrame {
         Guardar = new javax.swing.JButton();
         FechaCampo = new javax.swing.JTextField();
         FechaLabel = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        RingLabel = new javax.swing.JLabel();
+        RingLabel_2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        SonicPhoto = new javax.swing.JLabel();
 
         jPanel2.setBackground(new java.awt.Color(153, 204, 255));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Registro de Cliente");
+        TituloCliente.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        TituloCliente.setForeground(new java.awt.Color(255, 255, 255));
+        TituloCliente.setText("Registro de Cliente");
 
         DocumentoLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         DocumentoLabel.setText("Documento:");
@@ -61,16 +61,16 @@ public class registro_clientes extends javax.swing.JFrame {
         FechaLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         FechaLabel.setText("Fecha Nacimiento (año-mes-día):");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/berry/Materiales proyecto de Lógica/dfwphe0-17886b96-6e79-49a9-8d6f-ec4896d5f37d.gif"))); // NOI18N
+        RingLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        RingLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/berry/Materiales proyecto de Lógica/dfwphe0-17886b96-6e79-49a9-8d6f-ec4896d5f37d.gif"))); // NOI18N
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/berry/Materiales proyecto de Lógica/dfwphe0-17886b96-6e79-49a9-8d6f-ec4896d5f37d.gif"))); // NOI18N
+        RingLabel_2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/berry/Materiales proyecto de Lógica/dfwphe0-17886b96-6e79-49a9-8d6f-ec4896d5f37d.gif"))); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel4.setText("Registro de Cliente");
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/berry/Materiales proyecto de Lógica/icono_cliente.jpg"))); // NOI18N
-        jLabel5.setText("jLabel5");
+        SonicPhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/berry/Materiales proyecto de Lógica/icono_cliente.jpg"))); // NOI18N
+        SonicPhoto.setText("jLabel5");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -102,19 +102,19 @@ public class registro_clientes extends javax.swing.JFrame {
                                         .addGap(0, 29, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(jLabel1)))
+                                        .addComponent(TituloCliente)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(Guardar)
                                 .addGap(118, 118, 118)))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(RingLabel_2)
+                            .addComponent(SonicPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(27, 27, 27))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(jLabel2)
+                .addComponent(RingLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
@@ -127,11 +127,11 @@ public class registro_clientes extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
+                    .addComponent(RingLabel)
+                    .addComponent(RingLabel_2)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(11, 11, 11)
-                        .addComponent(jLabel1)))
+                        .addComponent(TituloCliente)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DocumentoLabel)
@@ -148,7 +148,7 @@ public class registro_clientes extends javax.swing.JFrame {
                             .addComponent(FechaLabel))
                         .addGap(18, 18, 18)
                         .addComponent(Guardar))
-                    .addComponent(jLabel5))
+                    .addComponent(SonicPhoto))
                 .addGap(123, 123, 123)
                 .addComponent(jLabel6)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -228,11 +228,11 @@ public class registro_clientes extends javax.swing.JFrame {
     private javax.swing.JButton Guardar;
     private javax.swing.JTextField NombreCampo;
     private javax.swing.JLabel NombreLabel;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel RingLabel;
+    private javax.swing.JLabel RingLabel_2;
+    private javax.swing.JLabel SonicPhoto;
+    private javax.swing.JLabel TituloCliente;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
